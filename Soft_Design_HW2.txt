@@ -2,7 +2,7 @@
 package Assignment2;
 
 public class Soft_Design_HW2{
-	private static Integer year, month, date;
+private static Integer year, month, date;
 	
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
@@ -24,11 +24,47 @@ public class Soft_Design_HW2{
             }
         }
 
+		while (month == null || month < 1 || month > 12) {
+            System.out.print("Enter the month of your birth: ");
+            boolean isGoodMonth = true;
+            String testMonth= scan.nextLine();
+            if (testMonth.isEmpty()) {
+                continue;
+            }
+            for (char m : testMonth.toCharArray()) {
+                if (m < 48 || m > 57) { //NOT INT
+                    isGoodMonth = false;
+                    break;
+                }
+            }
+            if (isGoodMonth) {
+                month = Integer.parseInt(testMonth);
+            }
+        }
 		
-		System.out.println("Enter the month of your birth (MM): ");
-		String testMonth= scan.nextLine();
-		
-		System.out.println("Enter the date of your birth (DD): ");
-		String testDate= scan.nextLine();
+		int[] maxDate = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+        GregorianCalendar cal = new GregorianCalendar();
+        if(cal.isLeapYear(year)) {
+            maxDate[2] = 29;
+        }
+
+		 while (date == null || date < 1 || date > maxDate[month]) {
+	            System.out.print("Enter the date of your birth: ");
+	            boolean isGoodDate= true;
+	            String testDate= scan.nextLine();
+	            if (testDate.isEmpty()) {
+	                continue;
+	            }
+	            for (char d : testDate.toCharArray()) {
+	                if (d < 48 || d > 57) { //NOT INT
+	                    isGoodDate = false;
+	                    break;
+	                }
+	            }
+	            if (isGoodDate) {
+	                date = Integer.parseInt(testDate);
+	            }
+	        }
 	}
+
 }
