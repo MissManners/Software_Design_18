@@ -1,0 +1,34 @@
+	
+package Assignment2;
+
+public class Soft_Design_HW2{
+	private static Integer year, month, date;
+	
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		while (year == null || year < 1000) {
+            System.out.print("Enter the year of your birth (YYYY): ");
+            boolean isGoodYear = true;
+            String testYear = scan.nextLine();
+            if(testYear.isEmpty()){
+                continue;
+            }
+            for (char y : testYear.toCharArray()) {
+                if (y < 48 || y > 57) { //NOT INT
+                    isGoodYear = false;
+                    break;
+                }
+            }
+            if (isGoodYear) {
+                year = Integer.parseInt(testYear);
+            }
+        }
+
+		
+		System.out.println("Enter the month of your birth (MM): ");
+		String testMonth= scan.nextLine();
+		
+		System.out.println("Enter the date of your birth (DD): ");
+		String testDate= scan.nextLine();
+	}
+}
