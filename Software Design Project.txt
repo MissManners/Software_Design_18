@@ -1,0 +1,21 @@
+/**
+ * 
+ */
+package BrokerProgram;
+
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
+import java.util.Scanner;
+
+public class BrokerSystem{
+
+public static void main(String [] args) throws IOException
+{
+		File Data = new File("XMLData");
+		Scanner s = new Scanner(Data);
+		while (s.hasNext())
+			{System.out.println(s.nextLine());}
+}
+
+}
